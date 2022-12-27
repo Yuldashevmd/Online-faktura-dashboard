@@ -15,46 +15,76 @@ import ArrowRight from "../../../../assets/svg/arrowRight.svg";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, MenuItem, Select } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Dot from "../../../GenericComp/Dot";
+import RejectDot from "../../../../assets/statusDots/rejected.svg";
+import SuccessDot from "../../../../assets/statusDots/success.svg";
+import PendingDot from "../../../../assets/statusDots/pending.svg";
+import DraftDot from "../../../../assets/statusDots/drafts.svg";
 import { P, Wrapper } from "./style";
 
 const Table = () => {
   const [tableshow, setTableShow] = useState(5);
   // columns table
   const columns = [
-    { field: "status", headerName: "Статус", width: 70 },
-    { field: "typedocument", headerName: "Тип документа ", width: 130 },
-    { field: "update", headerName: "Дата обновления ", width: 130 },
+    {
+      field: "status",
+      headerName: "Статус",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+      renderCell: () => <img src={SuccessDot} alt="dot" />,
+    },
+    {
+      field: "typedocument",
+      headerName: "Тип документа ",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+    },
+    {
+      field: "update",
+      headerName: "Дата обновления ",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+    },
     {
       field: "conteragent",
       headerName: "Контрагент ",
       type: "number",
-      width: 90,
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
     },
     {
       field: "numberdocument",
       headerName: "Номер и дата документа",
       sortable: false,
-      width: 160,
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
     },
     {
       field: "numberdeal",
       headerName: "Номер и дата договора",
       sortable: false,
-      width: 160,
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
     },
     {
       field: "sum",
       headerName: "Стоимость поставки",
       sortable: false,
-      width: 160,
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
     },
   ];
   // rows table
   const rows = [
     {
       id: 1,
-      status: <Dot bg="proccess" />,
+      status: RejectDot,
       typedocument: "Snow",
       update: "Jon",
       conteragent: 35,
@@ -64,7 +94,7 @@ const Table = () => {
     },
     {
       id: 2,
-      status: <Dot bg="rejected" />,
+      status: SuccessDot,
       typedocument: "Lannister",
       update: "Cersei",
       conteragent: 42,
@@ -74,7 +104,7 @@ const Table = () => {
     },
     {
       id: 3,
-      status: <Dot bg="success" />,
+      status: PendingDot,
       typedocument: "Lannister",
       update: "Jaime",
       conteragent: 45,
@@ -84,7 +114,7 @@ const Table = () => {
     },
     {
       id: 4,
-      status: <Dot bg="rejected" />,
+      status: DraftDot,
       typedocument: "Stark",
       update: "Arya",
       conteragent: 16,
@@ -94,7 +124,7 @@ const Table = () => {
     },
     {
       id: 5,
-      status: <Dot bg="success" />,
+      status: SuccessDot,
       typedocument: "Targaryen",
       update: "Daenerys",
       conteragent: 6,
@@ -104,7 +134,7 @@ const Table = () => {
     },
     {
       id: 6,
-      status: <Dot bg="rejected" />,
+      status: PendingDot,
       typedocument: "Melisandre",
       update: 22,
       conteragent: 150,
@@ -114,7 +144,7 @@ const Table = () => {
     },
     {
       id: 7,
-      status: <Dot bg="proccess" />,
+      status: DraftDot,
       typedocument: "Clifford",
       update: "Ferrara",
       conteragent: 44,
@@ -124,7 +154,7 @@ const Table = () => {
     },
     {
       id: 8,
-      status: <Dot bg="success" />,
+      status: SuccessDot,
       typedocument: "Frances",
       update: "Rossini",
       conteragent: 36,
@@ -134,7 +164,7 @@ const Table = () => {
     },
     {
       id: 9,
-      status: <Dot bg="rejected" />,
+      status: SuccessDot,
       typedocument: "Roxie",
       update: "Harvey",
       conteragent: 65,
@@ -180,19 +210,19 @@ const Table = () => {
           <Box sx={flex} gap="0 24px ">
             <Typography variant="h5">Таблица</Typography>
             <Box sx={flex} gap="0 8px">
-              <Dot bg="rejected" />
+              <img src={RejectDot} alt="success" />
               <P>Отменен</P>
             </Box>
             <Box sx={flex} gap="0 8px">
-              <Dot bg="success" />
+              <img src={SuccessDot} alt="success" />
               <P>Подписано</P>
             </Box>
             <Box sx={flex} gap="0 8px">
-              <Dot bg="proccess" />
+              <img src={PendingDot} alt="success" />
               <P>В ожидании</P>
             </Box>
             <Box sx={flex} gap="0 8px">
-              <Dot bg="draft" />
+              <img src={DraftDot} alt="success" />
               <P>Черновик</P>
             </Box>
           </Box>
@@ -230,7 +260,7 @@ const Table = () => {
               background: "#F8FAFC",
               boxShadow: "inset 0px -1px 0px rgba(0, 0, 0, 0.04)",
             },
-            ".MuiDataGrid-columnSeparator": {
+            "& .MuiDataGrid-columnSeparator": {
               display: "none",
             },
           }}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Box } from "@mui/material";
 import SidebarPage from "../Sidebar";
 import Navbar from "../Navbar";
@@ -10,7 +10,9 @@ const Layout = () => {
       <SidebarPage />
       <Box display="flex" flexDirection="column" sx={{ background: "#F8FAFC" }}>
         <Navbar />
-        <Outlet />
+        <Suspense fallback="Loading...">
+          <Outlet />
+        </Suspense>
       </Box>
     </Box>
   );
