@@ -5,10 +5,12 @@ import { ProSidebarProvider } from "react-pro-sidebar";
 import "./index.css";
 import Root from "./root";
 import Context from "./context";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <BrowserRouter>
       <Context>
         <ProSidebarProvider>
@@ -16,5 +18,5 @@ root.render(
         </ProSidebarProvider>
       </Context>
     </BrowserRouter>
-  </React.StrictMode>
+  </Provider>
 );
